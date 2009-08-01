@@ -1,20 +1,21 @@
-%define module   Template-Provider-Encoding
-%define version    0.10
-%define release    %mkrel 2
+%define upstream_name    Template-Provider-Encoding
+%define upstream_version 0.10
 
-Name:       perl-%{module}
-Version:    %{version}
-Release:    %{release}
-License:    GPL or Artistic
-Group:      Development/Perl
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:    Template plugin to specify encoding
-Url:        http://search.cpan.org/dist/%{module}
-Source:     http://www.cpan.org/modules/by-module/Template/%{module}-%{version}.tar.gz
+License:    GPL+ or Artistic
+Group:      Development/Perl
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.gz
+
 BuildRequires: perl(Encode)
 BuildRequires: perl(Template)
 BuildRequires: perl(Test::More)
 BuildArch: noarch
-BuildRoot:  %{_tmppath}/%{name}-%{version}
+BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 Template::Plugin::encoding is a Template plugin to declare the encoding of
@@ -25,7 +26,7 @@ template to specify file encoding, which might be useful for XML or HTML
 meta tag.
 
 %prep
-%setup -q -n %{module}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -46,4 +47,3 @@ rm -rf %{buildroot}
 %doc Changes
 %{_mandir}/man3/*
 %perl_vendorlib/Template
-
