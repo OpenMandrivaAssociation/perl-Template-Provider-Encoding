@@ -1,21 +1,21 @@
 %define upstream_name    Template-Provider-Encoding
 %define upstream_version 0.10
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 1
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	2
 
-Summary:    Template plugin to specify encoding
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Template plugin to specify encoding
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Encode)
-BuildRequires: perl(Template)
-BuildRequires: perl(Test::More)
-BuildArch: noarch
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(Encode)
+BuildRequires:	perl(Template)
+BuildRequires:	perl(Test::More)
+BuildArch:	noarch
 
 %description
 Template::Plugin::encoding is a Template plugin to declare the encoding of
@@ -29,21 +29,33 @@ meta tag.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 make test
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc Changes
 %{_mandir}/man3/*
-%perl_vendorlib/Template
+%{perl_vendorlib}/Template
+
+%changelog
+* Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 0.100.0-1mdv2010.0
++ Revision: 405537
+- rebuild using %%perl_convert_version
+
+* Fri Aug 08 2008 Thierry Vignaud <tvignaud@mandriva.com> 0.10-2mdv2009.0
++ Revision: 268729
+- rebuild early 2009.0 package (before pixel changes)
+
+* Sat May 24 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.10-1mdv2009.0
++ Revision: 210858
+- import perl-Template-Provider-Encoding
+
+
+* Sat May 24 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.10-1mdv2009.0
+- first mdv release
