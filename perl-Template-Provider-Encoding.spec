@@ -1,13 +1,14 @@
 %define upstream_name    Template-Provider-Encoding
+%define upstream_version 0.10
 Name:		perl-%{upstream_name}
 Version:	0.10
-Release:	6
+Release:	1
 
 Summary:	Template plugin to specify encoding
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Template-Provider-Encoding
-Source0:	https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Template-Provider-Encoding-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Template-Provider-Encoding-0.10.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -42,17 +43,3 @@ make test
 %{_mandir}/man3/*
 %{perl_vendorlib}/Template
 
-%changelog
-* Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 0.100.0-1mdv2010.0
-+ Revision: 405537
-- rebuild using %0.10 Fri Aug 08 2008 Thierry Vignaud <tvignaud@mandriva.com> 0.10-2mdv2009.0
-+ Revision: 268729
-- rebuild early 2009.0 package (before pixel changes)
-
-* Sat May 24 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.10-1mdv2009.0
-+ Revision: 210858
-- import perl-Template-Provider-Encoding
-
-
-* Sat May 24 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.10-1mdv2009.0
-- first mdv release
