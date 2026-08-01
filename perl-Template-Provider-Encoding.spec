@@ -2,7 +2,7 @@
 %define upstream_version 0.10
 Name:		perl-%{upstream_name}
 Version:	0.10
-Release:	3
+Release:	4
 
 Summary:	Template plugin to specify encoding
 License:	GPL+ or Artistic
